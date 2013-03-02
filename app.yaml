@@ -1,0 +1,38 @@
+application: appenginestarterproject
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+default_expiration: "365d"
+
+builtins:
+- remote_api: on
+- admin_redirect: on
+
+inbound_services:
+- channel_presence
+- warmup
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: latest
+
+- name: webob
+  version: latest
+
+- name: jinja2
+  version: latest
+
+- name: markupsafe
+  version: latest  
+
+- name: lxml
+  version: latest
